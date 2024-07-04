@@ -1,6 +1,7 @@
 import logo from "../assets/logo.png";
 import link from "../assets/link-out.png";
 import {Link} from "react-router-dom";
+
 export default function Home() {
   return (
     <div className="bg-[#0F1116] w-full h-full min-h-screen flex flex-col items-center justify-center">

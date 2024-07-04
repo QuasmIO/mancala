@@ -106,8 +106,6 @@ export default function Header() {
 
     const player = getPlayer(data?.mancalaGameModels.edges, account.account.address);
 
-    console.log(player)
-
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDropdownClose, setIsDropdownClose] = useState(false);
 

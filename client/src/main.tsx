@@ -11,11 +11,9 @@ async function init() {
     const rootElement = document.getElementById("root");
     if (!rootElement) throw new Error("React root not found");
     const root = ReactDOM.createRoot(rootElement as HTMLElement);
-
     const setupResult = await setup(dojoConfig);
-
     const client = new ApolloClient({
-        uri: 'https://api.cartridge.gg/x/mancala/torii/graphql',
+        uri: `${dojoConfig.toriiUrl}/graphql`,
         cache: new InMemoryCache(),
     })
 
