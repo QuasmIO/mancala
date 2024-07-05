@@ -2,7 +2,13 @@ import logo from "../assets/logo.png";
 import link from "../assets/link-out.png";
 import {Link} from "react-router-dom";
 
+
+
+
+
 export default function Home() {
+
+
   return (
     <div className="bg-[#0F1116] w-full h-full min-h-screen flex flex-col items-center justify-center">
       <div className="bg-[url('./assets/home-box.png')] bg-cover bg-center bg-no-repeat w-[874px] h-[486px] flex flex-col items-center justify-center space-y-20">
@@ -22,7 +28,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <p className="text-[#C7CAD4] absolute bottom-5">by Realm of Ra Studios</p>
+      <p className="text-[#C7CAD4] absolute bottom-5">By Realm of Ra Studios</p>
     </div>
   );
 }
