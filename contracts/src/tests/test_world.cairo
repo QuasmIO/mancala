@@ -49,6 +49,7 @@ mod tests {
         assert(player_two.pit6 == 4, 'p2 pit 5 not init correctly');
         assert(player_two.pit6 == 4, 'p2 pit 6 not init correctly');
     }
+    
 
     #[test]
     #[available_gas(3000000000000)]
@@ -86,6 +87,29 @@ mod tests {
         assert(player_two.pit6 == 4, 'p2 pit 4 not init correctly');
         assert(player_two.pit6 == 4, 'p2 pit 5 not init correctly');
         assert(player_two.pit6 == 4, 'p2 pit 6 not init correctly');
+    }
+
+        #[test]
+    #[available_gas(3000000000000)]
+    fn test_create_private_game_same_player() {
+        let init_calldata: Span<felt252> = array![].span();
+        let _player_one_address = starknet::contract_address_const::<0x0>();
+        let player_two_address = starknet::contract_address_const::<0x456>();
+        let mut models = array![mancala_game::TEST_CLASS_HASH];
+        let world = spawn_test_world(models);
+        let contract_address = world
+            .deploy_contract('salt', actions::TEST_CLASS_HASH.try_into().unwrap(), init_calldata);
+
+        let actions_system = IActionsDispatcher { contract_address: contract_address };
+        actions_system.create_initial_game_id();
+        let mancala_game: MancalaGame = actions_system.create_private_game(player_two_address);
+
+        let player_one: GamePlayer = get!(
+            world, (mancala_game.player_one, mancala_game.game_id), (GamePlayer)
+        );
+        let mancala_game: MancalaGame = get!(world, (mancala_game.game_id), (MancalaGame));
+        assert!(mancala_game.player_one == _player_one_address, "player one not set");
+        assert!(mancala_game.player_two == _player_one_address, "player one not set");
     }
 
     #[test]

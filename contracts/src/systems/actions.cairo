@@ -79,7 +79,7 @@ mod actions {
                 game_id.game_id, player_one_address
             );
             let player_one = GamePlayerTrait::new(mancala_game.game_id, player_one_address);
-            let player_two = GamePlayerTrait::new(mancala_game.game_id, player_two_address);
+            let player_two = GamePlayerTrait::new(mancala_game.game_id, player_one_address);
             mancala_game.join_game(player_two);
             mancala_game.is_private = true;
             game_id.game_id += 1;
